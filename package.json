@@ -1,0 +1,40 @@
+{
+  "name": "kata-btp-js",
+  "description": "kata BTP en Java Script",
+  "version": "0.0.1",
+  "main": "CLI.js",
+  "private": true,
+  "maintainers": [
+    "Thomas Luquet <tlu@octo.com>"
+  ],
+  "scripts": {
+    "start": "node start",
+    "test": "npx mocha",
+    "coverage": "npx nyc npm test",
+    "prettify": "npx prettier --no-config --write *.js test/*.js"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.0.2",
+    "mocha-sinon": "^2.1.2",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.2",
+    "sinon": "^11.1.1"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "synchro-prompt": "^1.1.0",
+    "test-console": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:octo-technology/octo-craft/kata-btp-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
