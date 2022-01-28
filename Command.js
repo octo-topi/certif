@@ -23,25 +23,16 @@ class Command {
   }
 
 
-  save(){
-    var id = uuid();
+  save(id = uuid()) {
+    var id = id;
     let header = "id; Date;Perpend Palets;Copper Wire Coils;Copper Wire Meters;";
-    let jour = moment().format('YYYY-MM-DD');
-    var File_Name = "./" + jour + "-orders.csv";
+    const __ret = this.createFileName();
+    let jour = __ret.jour;
+    var File_Name = __ret.File_Name;
 
     try {
       var fs = require('fs');
-
-      const append = fs.existsSync(File_Name)
-
-      var file = fs.openSync(File_Name, 'a')
-
-      if(!append) {
-        //Write the CSV file header
-        fs.appendFileSync(file, header);
-        //Add a new line separator after the header
-        fs.appendFileSync(file, "\n");
-      }
+      var file = this.createFile(fs, File_Name, header);
 
       //Write a the order to the CSV file
       fs.appendFileSync(file, id);
@@ -71,6 +62,27 @@ class Command {
     }
 
   }
+
+  createFile(fs, File_Name, header) {
+    const append = fs.existsSync(File_Name)
+
+    var file = fs.openSync(File_Name, 'a')
+
+    if (!append) {
+      //Write the CSV file header
+      fs.appendFileSync(file, header);
+      //Add a new line separator after the header
+      fs.appendFileSync(file, "\n");
+    }
+    return file;
+  }
+
+  createFileName() {
+    let jour = moment().format('YYYY-MM-DD');
+    var File_Name = "./" + jour + "-orders.csv";
+    return {jour, File_Name};
+  }
+
   addCopperWire( quantity) {
     this.copperWire.addQuantity(quantity);
   }
