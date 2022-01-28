@@ -39,4 +39,6 @@ describe('#save', ()=>{
         const expectedLine = `${id};2022-01-28;5;0;2\n`
         expect(fileContent).to.contains(expectedLine);
     })
+
+
 })
